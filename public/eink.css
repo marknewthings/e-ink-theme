@@ -1,0 +1,619 @@
+/**
+ * E-Ink 黑白主题 for Orca Note
+ * 专为电纸书 / 墨水屏显示器设计：纯白背景、纯黑文字，
+ * 所有彩色一律映射为黑白灰阶，边框与分隔线使用纯黑实线。
+ */
+
+:root {
+  /* 主题激活标记，供插件 JS 检测当前主题是否为墨水屏主题 */
+  --eink-theme-flag: 1 !important;
+
+  /* 灰阶基础色板（仅黑、白与必要的灰） */
+  --eink-white: #ffffff !important;
+  --eink-black: #000000 !important;
+  --eink-gray-0: #f5f5f5 !important;
+  --eink-gray-1: #ececec !important;
+  --eink-gray-2: #dedede !important;
+  --eink-gray-3: #cfcfcf !important;
+  --eink-gray-4: #bdbdbd !important;
+  --eink-gray-5: #9e9e9e !important;
+  --eink-gray-6: #7a7a7a !important;
+  --eink-gray-7: #5c5c5c !important;
+  --eink-gray-8: #3d3d3d !important;
+  --eink-gray-9: #1f1f1f !important;
+
+  /* 主色：纯黑 */
+  --orca-color-primary-5: var(--eink-black) !important;
+  --orca-color-primary-1: var(--eink-gray-1) !important;
+  --orca-color-primary-2: var(--eink-gray-3) !important;
+  --orca-color-primary-3: var(--eink-gray-5) !important;
+  --orca-color-primary-4: var(--eink-gray-7) !important;
+  --orca-color-primary-6: var(--eink-gray-9) !important;
+  --orca-color-primary-7: var(--eink-black) !important;
+  --orca-color-primary-8: var(--eink-black) !important;
+  --orca-color-primary-9: var(--eink-black) !important;
+
+  /* 灰阶 */
+  --orca-color-gray-0: var(--eink-gray-0) !important;
+  --orca-color-gray-1: var(--eink-gray-1) !important;
+  --orca-color-gray-2: var(--eink-gray-2) !important;
+  --orca-color-gray-3: var(--eink-gray-3) !important;
+  --orca-color-gray-4: var(--eink-gray-4) !important;
+  --orca-color-gray-5: var(--eink-gray-5) !important;
+  --orca-color-gray-6: var(--eink-gray-6) !important;
+  --orca-color-gray-7: var(--eink-gray-7) !important;
+  --orca-color-gray-8: var(--eink-gray-8) !important;
+  --orca-color-gray-9: var(--eink-gray-9) !important;
+
+  /* 成功 / 警告 / 危险：一律灰阶化 */
+  --orca-color-success-5: var(--eink-gray-8) !important;
+  --orca-color-success-1: var(--eink-gray-1) !important;
+  --orca-color-success-2: var(--eink-gray-3) !important;
+  --orca-color-success-3: var(--eink-gray-5) !important;
+  --orca-color-success-4: var(--eink-gray-7) !important;
+  --orca-color-success-6: var(--eink-gray-9) !important;
+  --orca-color-success-7: var(--eink-black) !important;
+  --orca-color-success-8: var(--eink-black) !important;
+  --orca-color-success-9: var(--eink-black) !important;
+
+  --orca-color-warning-5: var(--eink-gray-7) !important;
+  --orca-color-warning-1: var(--eink-gray-1) !important;
+  --orca-color-warning-2: var(--eink-gray-3) !important;
+  --orca-color-warning-3: var(--eink-gray-5) !important;
+  --orca-color-warning-4: var(--eink-gray-6) !important;
+  --orca-color-warning-6: var(--eink-gray-8) !important;
+  --orca-color-warning-7: var(--eink-gray-9) !important;
+  --orca-color-warning-8: var(--eink-black) !important;
+  --orca-color-warning-9: var(--eink-black) !important;
+
+  --orca-color-dangerous-5: var(--eink-black) !important;
+  --orca-color-dangerous-1: var(--eink-gray-1) !important;
+  --orca-color-dangerous-2: var(--eink-gray-3) !important;
+  --orca-color-dangerous-3: var(--eink-gray-5) !important;
+  --orca-color-dangerous-4: var(--eink-gray-7) !important;
+  --orca-color-dangerous-6: var(--eink-gray-9) !important;
+  --orca-color-dangerous-7: var(--eink-black) !important;
+  --orca-color-dangerous-8: var(--eink-black) !important;
+  --orca-color-dangerous-9: var(--eink-black) !important;
+
+  /* 背景：纯白为主，层级用极浅灰区分 */
+  --orca-color-bg-1: var(--eink-white) !important;
+  --orca-color-bg-2: var(--eink-gray-0) !important;
+  --orca-color-bg-3: var(--eink-gray-1) !important;
+  --orca-color-bg-blue: var(--eink-gray-1) !important;
+  --orca-color-bg-green: var(--eink-gray-1) !important;
+  --orca-color-bg-red: var(--eink-gray-1) !important;
+  --orca-color-bg-yellow: var(--eink-gray-1) !important;
+
+  /* 文字：纯黑为主 */
+  --orca-color-text-1: var(--eink-black) !important;
+  --orca-color-text-2: var(--eink-gray-8) !important;
+  --orca-color-text-blue: var(--eink-black) !important;
+  --orca-color-text-green: var(--eink-black) !important;
+  --orca-color-text-red: var(--eink-black) !important;
+  --orca-color-text-yellow: var(--eink-black) !important;
+
+  /* 边框：纯黑实线；内容区分隔线与背景同色（不显示） */
+  --orca-color-border: var(--eink-black) !important;
+  --orca-color-separator: var(--eink-white) !important;
+
+  /* 其他界面元素 */
+  --orca-color-menu-highlight: var(--eink-white) !important;
+  --orca-color-placeholder: var(--eink-gray-6) !important;
+  --orca-color-selection: var(--eink-gray-2) !important;
+  --orca-color-result-highlight: var(--eink-gray-3) !important;
+  --orca-color-tag: var(--eink-white) !important;
+  --orca-color-tab: var(--eink-black) !important;
+  --orca-color-win-scrollbar: var(--eink-gray-6) !important;
+  --orca-color-scope-line: var(--eink-gray-4) !important;
+  --orca-color-mirror: var(--eink-gray-0) !important;
+  --orca-color-icon-bg: var(--eink-white) !important;
+
+  /* 弹窗/菜单阴影一律改为 2px 纯黑描边 */
+  --orca-shadow-menu: 0 0 0 2px var(--eink-black) !important;
+  --orca-shadow-popup: 0 0 0 2px var(--eink-black) !important;
+}
+
+/* 系统深色模式下同样强制白底黑字（墨水屏无深色需求） */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --eink-theme-flag: 1 !important;
+
+    --orca-color-primary-5: var(--eink-black) !important;
+    --orca-color-primary-1: var(--eink-gray-1) !important;
+    --orca-color-primary-2: var(--eink-gray-3) !important;
+    --orca-color-primary-3: var(--eink-gray-5) !important;
+    --orca-color-primary-4: var(--eink-gray-7) !important;
+    --orca-color-primary-6: var(--eink-gray-9) !important;
+    --orca-color-primary-7: var(--eink-black) !important;
+    --orca-color-primary-8: var(--eink-black) !important;
+    --orca-color-primary-9: var(--eink-black) !important;
+
+    --orca-color-gray-0: var(--eink-gray-0) !important;
+    --orca-color-gray-1: var(--eink-gray-1) !important;
+    --orca-color-gray-2: var(--eink-gray-2) !important;
+    --orca-color-gray-3: var(--eink-gray-3) !important;
+    --orca-color-gray-4: var(--eink-gray-4) !important;
+    --orca-color-gray-5: var(--eink-gray-5) !important;
+    --orca-color-gray-6: var(--eink-gray-6) !important;
+    --orca-color-gray-7: var(--eink-gray-7) !important;
+    --orca-color-gray-8: var(--eink-gray-8) !important;
+    --orca-color-gray-9: var(--eink-gray-9) !important;
+
+    --orca-color-success-5: var(--eink-gray-8) !important;
+    --orca-color-success-1: var(--eink-gray-1) !important;
+    --orca-color-success-2: var(--eink-gray-3) !important;
+    --orca-color-success-3: var(--eink-gray-5) !important;
+    --orca-color-success-4: var(--eink-gray-7) !important;
+    --orca-color-success-6: var(--eink-gray-9) !important;
+    --orca-color-success-7: var(--eink-black) !important;
+    --orca-color-success-8: var(--eink-black) !important;
+    --orca-color-success-9: var(--eink-black) !important;
+
+    --orca-color-warning-5: var(--eink-gray-7) !important;
+    --orca-color-warning-1: var(--eink-gray-1) !important;
+    --orca-color-warning-2: var(--eink-gray-3) !important;
+    --orca-color-warning-3: var(--eink-gray-5) !important;
+    --orca-color-warning-4: var(--eink-gray-6) !important;
+    --orca-color-warning-6: var(--eink-gray-8) !important;
+    --orca-color-warning-7: var(--eink-gray-9) !important;
+    --orca-color-warning-8: var(--eink-black) !important;
+    --orca-color-warning-9: var(--eink-black) !important;
+
+    --orca-color-dangerous-5: var(--eink-black) !important;
+    --orca-color-dangerous-1: var(--eink-gray-1) !important;
+    --orca-color-dangerous-2: var(--eink-gray-3) !important;
+    --orca-color-dangerous-3: var(--eink-gray-5) !important;
+    --orca-color-dangerous-4: var(--eink-gray-7) !important;
+    --orca-color-dangerous-6: var(--eink-gray-9) !important;
+    --orca-color-dangerous-7: var(--eink-black) !important;
+    --orca-color-dangerous-8: var(--eink-black) !important;
+    --orca-color-dangerous-9: var(--eink-black) !important;
+
+    --orca-color-bg-1: var(--eink-white) !important;
+    --orca-color-bg-2: var(--eink-gray-0) !important;
+    --orca-color-bg-3: var(--eink-gray-1) !important;
+    --orca-color-bg-blue: var(--eink-gray-1) !important;
+    --orca-color-bg-green: var(--eink-gray-1) !important;
+    --orca-color-bg-red: var(--eink-gray-1) !important;
+    --orca-color-bg-yellow: var(--eink-gray-1) !important;
+
+    --orca-color-text-1: var(--eink-black) !important;
+    --orca-color-text-2: var(--eink-gray-8) !important;
+    --orca-color-text-blue: var(--eink-black) !important;
+    --orca-color-text-green: var(--eink-black) !important;
+    --orca-color-text-red: var(--eink-black) !important;
+    --orca-color-text-yellow: var(--eink-black) !important;
+
+    --orca-color-border: var(--eink-black) !important;
+    --orca-color-separator: var(--eink-white) !important;
+
+    --orca-color-menu-highlight: var(--eink-white) !important;
+    --orca-color-placeholder: var(--eink-gray-6) !important;
+    --orca-color-selection: var(--eink-gray-2) !important;
+    --orca-color-result-highlight: var(--eink-gray-3) !important;
+    --orca-color-tag: var(--eink-white) !important;
+    --orca-color-tab: var(--eink-black) !important;
+    --orca-color-win-scrollbar: var(--eink-gray-6) !important;
+    --orca-color-scope-line: var(--eink-gray-4) !important;
+    --orca-color-mirror: var(--eink-gray-0) !important;
+    --orca-color-icon-bg: var(--eink-white) !important;
+
+    --orca-shadow-menu: 0 0 0 2px var(--eink-black) !important;
+    --orca-shadow-popup: 0 0 0 2px var(--eink-black) !important;
+  }
+}
+
+/* 文字选区：浅灰底黑字（可在插件设置中切换为黑底白字） */
+::selection {
+  background: var(--eink-gray-3) !important;
+  color: var(--eink-black) !important;
+}
+
+/* 侧边栏与主区域统一为白底黑字 */
+#sidebar {
+  --orca-color-bg-1: var(--eink-white) !important;
+  --orca-color-bg-2: var(--eink-gray-0) !important;
+  --orca-color-text-1: var(--eink-black) !important;
+  --orca-color-text-2: var(--eink-gray-8) !important;
+  --orca-color-border: var(--eink-black) !important;
+  --orca-color-menu-highlight: var(--eink-gray-2) !important;
+  --orca-color-selection: var(--eink-gray-2) !important;
+  --orca-color-placeholder: var(--eink-gray-6) !important;
+  --orca-color-win-scrollbar: var(--eink-gray-6) !important;
+}
+
+/* 查询块 tab 区上方的点线也去掉 */
+.orca-block-editor-query-tabs-container {
+  border-top: none !important;
+}
+
+/* ============================================================
+ * 非灵动模式：主编辑区（#main）四周加 1.5px 纯黑实线边框，
+ * 与左侧侧栏 / 浮动目录的描边风格保持一致
+ * ============================================================ */
+body:not(.orca-vibrant) #main {
+  border: 1.5px solid var(--eink-black) !important;
+}
+
+/* ============================================================
+ * 软件背景与灵动模式（vibrant）：
+ * 去掉半透明渐变底、阴影与彩色透出；
+ * 左侧浮动侧栏改为纯白实底 + 纯黑实线边框
+ * ============================================================ */
+:root {
+  --orca-shadow-sidebar: none !important;
+}
+
+body,
+:not(.orca-exporting) body.orca-vibrant {
+  background-color: var(--eink-white) !important;
+  background-image: none !important;
+}
+
+/* 非灵动模式下侧边栏自带一套深色局部变量（黑底白字），
+ * 这里全部覆盖为白底黑字 */
+#sidebar {
+  --orca-color-bg-1: var(--eink-white) !important;
+  --orca-color-text-1: var(--eink-black) !important;
+  --orca-color-text-2: var(--eink-gray-6) !important;
+  --orca-color-border: var(--eink-black) !important;
+  --orca-color-dangerous-5: var(--eink-black) !important;
+  --orca-color-menu-highlight: var(--eink-white) !important;
+  --orca-color-win-scrollbar: var(--eink-gray-4) !important;
+  --orca-shadow-menu: 0 0 0 2px var(--eink-black) !important;
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+}
+
+#sidebar .orca-button.plain:not(:disabled):active {
+  background-color: var(--eink-gray-1) !important;
+}
+
+/* 侧边栏“新建页面”按钮：深灰底改白底黑字 + 黑框 */
+.orca-sidebar-create-aliased-btn.orca-button {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+:not(.orca-exporting) body.orca-vibrant .sidebar-opened #sidebar,
+:not(.orca-exporting) body.orca-vibrant.t-default .sidebar-opened #sidebar {
+  background-color: var(--eink-white) !important;
+  box-shadow: none !important;
+  border: 1.5px solid var(--eink-black) !important;
+}
+
+/* 灵动模式下右侧浮动目录（TOC）同样去掉阴影与半透明底，加纯黑实线边框 */
+:not(.orca-exporting) body.orca-vibrant .orca-toc {
+  background-color: var(--eink-white) !important;
+  box-shadow: none !important;
+  border: 1.5px solid var(--eink-black) !important;
+}
+
+/* ============================================================
+ * 设置面板：左侧目录与各表头统一白底黑字，
+ * 左右两栏用黑色直线隔开；选中菜单项 = 白底黑字 + 纯黑实线框
+ * ============================================================ */
+.orca-settings > .sections {
+  background-color: var(--eink-white) !important;
+  border-right: 1px solid var(--eink-black) !important;
+}
+
+.orca-settings > .sections .title {
+  background-color: var(--eink-white) !important;
+}
+
+.orca-settings > .sections .item.selected,
+.orca-settings > .sections .plugin-item.selected {
+  background-color: var(--eink-white) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+/* 设置项悬停（未选中）= 白底黑字 + 黑色虚线框 */
+.orca-settings > .sections .item:hover:not(.selected),
+.orca-settings > .sections .plugin-item:hover:not(.selected) {
+  background-color: var(--eink-white) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+.orca-settings-shortcuts-header,
+.orca-command-modal-command-header {
+  background-color: var(--eink-white) !important;
+}
+
+/* ============================================================
+ * 分段控件（tab 按钮）：容器与选项均纯白底黑字；
+ * 选中项 = 白底黑字 + 纯黑实线框 + 字体加粗（含侧边栏 tab）；
+ * （查询视图 tab 保留下划线式选中，--orca-color-tab 已映射为纯黑）
+ * ============================================================ */
+.orca-segmented {
+  background-color: var(--eink-white) !important;
+}
+
+.orca-segmented-item {
+  color: var(--eink-black) !important;
+}
+
+.orca-sidebar-tab-options {
+  background-color: var(--eink-white) !important;
+  /* tab 组整体 = 白底 + 黑色虚线框 */
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+.orca-sidebar-tab-options .orca-segmented-item {
+  color: var(--eink-black) !important;
+}
+
+/* 侧边栏收藏/标签/页面 tab：未选中项 = 白底黑字无边框 */
+.orca-sidebar-tab-options .orca-segmented-item:not(.orca-selected) {
+  background-color: var(--eink-white) !important;
+}
+
+.orca-segmented-item.orca-selected {
+  color: var(--eink-black) !important;
+  font-weight: 700 !important;
+}
+
+.orca-segmented:not(.orca-transitioning, .orca-block-editor-query-tabs)
+  .orca-segmented-item.orca-selected {
+  background-color: var(--eink-white) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+.orca-segmented:not(.orca-block-editor-query-tabs) .orca-transition {
+  background-color: var(--eink-white) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+/* 柔和按钮（查询条件框等）：灰底改为白底黑字 + 纯黑实线框 */
+.orca-button.soft {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+.orca-button.soft:active {
+  background-color: var(--eink-gray-1) !important;
+}
+
+/* 查询块的查询条件区：灰底改为白底黑字 + 黑色虚线框 */
+.orca-query-conditions {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+/* 查询结果块：灰底卡片改为白底黑字 + 黑色虚线框 */
+.orca-query-list-block {
+  --orca-color-mirror: var(--eink-gray-0) !important;
+  /* 应用默认卡片间距（spacing-md ≈ 0.55rem）远小于卡片内部留白，
+   * 相邻两卡的底线/顶线会紧贴在一起，看起来像同一张卡的双底线，
+   * 这里拉大垂直间距以区分卡片边界 */
+  margin: var(--orca-spacing-xl) 0 !important;
+}
+
+.orca-query-list-block:before {
+  background-color: var(--eink-white) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+/* 选中文本时相关块的高亮遮罩：灰底改为透明 + 黑色虚线框
+ *（该元素是盖在内容上方的遮罩，不能用不透明白底） */
+.orca-block-highlighter {
+  background-color: transparent !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+/* 插件市场弹窗：灰底改纯白，安全提示框去掉灰色渲染 */
+.orca-plugin-marketplace {
+  background: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+}
+
+.orca-plugin-marketplace .orca-plugin-marketplace-security-warning,
+.orca-plugin-marketplace .orca-plugin-marketplace-warning {
+  background: var(--eink-white) !important;
+  border: 1.5px solid var(--eink-black) !important;
+  color: var(--eink-black) !important;
+}
+
+/* ============================================================
+ * 日历：悬停日期 = 白底黑字 + 黑色虚线圆圈；
+ * 今天 / 选中日期 = 白底黑字 + 黑色实线圆圈
+ * ============================================================ */
+.orca-calendar :is(.day, .month, .year):not(.value):hover {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+.orca-calendar .day.has-remindings {
+  background-color: var(--eink-gray-2) !important;
+}
+
+.orca-calendar .today {
+  border: 1.5px solid var(--eink-black) !important;
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+}
+
+.orca-calendar :is(.day, .month, .year).value {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+  font-weight: 700 !important;
+}
+
+/* 今天同时被选中时，只保留一层实线圆圈 */
+.orca-calendar .today.value {
+  border: none !important;
+}
+
+/* ============================================================
+ * 侧边栏目录树（收藏/标签/页面）：列表图标去除深色底，改用纯白；
+ * 菜单项悬停 = 白底黑字 + 黑色虚线框（列表项自带透明虚线边框位）
+ * （!important 用于压过灵动模式下的高特异性嵌套规则）
+ * ============================================================ */
+.orca-fav-item-icon,
+.orca-tags-tag-icon,
+.orca-tags-tag-icon-emoji,
+.orca-aliased-block-icon,
+.orca-aliased-block-icon-emoji {
+  background-color: var(--eink-white) !important;
+}
+
+/* 列表项预留的透明虚线边框统一为 1.5px，悬停时只变色不跳动 */
+.orca-fav-item-item,
+.orca-tags-tag-item,
+.orca-aliased-block-item {
+  border-width: 1.5px !important;
+}
+
+.orca-fav-item-item:hover,
+.orca-tags-tag-item:hover,
+.orca-aliased-block-item:hover {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  border-color: var(--eink-black) !important;
+}
+
+.orca-fav-item-item:hover .orca-fav-item-icon,
+.orca-tags-tag-item:hover :is(.orca-tags-tag-icon, .orca-tags-tag-icon-emoji),
+.orca-aliased-block-item:hover
+  :is(.orca-aliased-block-icon, .orca-aliased-block-icon-emoji) {
+  background-color: var(--eink-white) !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+ * 编辑区内联标签：白底黑字 + 纯黑实线框
+ * （底色由 --orca-color-tag 控制，边框颜色已映射为纯黑，
+ * 此处显式声明以防其他规则覆盖）
+ * ============================================================ */
+.orca-tag {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  border: 1.5px solid var(--eink-black) !important;
+}
+
+/* ============================================================
+ * 开关控件：关闭 = 纯白轨道 + 黑色描边；打开 = 纯黑轨道 + 白色旋钮
+ * ============================================================ */
+.orca-switch {
+  background-color: var(--eink-white) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+  color: var(--eink-black) !important;
+}
+
+.orca-switch .orca-switch-toggle {
+  background-color: var(--eink-white) !important;
+  box-shadow: inset 0 0 0 1.5px var(--eink-black) !important;
+}
+
+.orca-switch-on {
+  background-color: var(--eink-black) !important;
+  color: var(--eink-white) !important;
+}
+
+.orca-switch-on .orca-switch-toggle {
+  background-color: var(--eink-white) !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+ * 库切换：按钮与下拉列表项悬停/按下 = 白底黑字 + 黑色虚线框；
+ * 当前选中的库 = 白底黑字 + 黑色实线框
+ * （!important 用于压过灵动模式下的高特异性嵌套规则）
+ * ============================================================ */
+.orca-repo-switcher-button.orca-button:not(:disabled):hover,
+.orca-repo-switcher-button.orca-button:not(:disabled):active {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+.orca-repo-switcher-repo-item:hover,
+.orca-repo-switcher-modal-item:hover {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+.orca-repo-switcher-modal-item-current,
+.orca-repo-switcher-selected {
+  background-color: var(--eink-white) !important;
+  outline: 1.5px solid var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+/* ============================================================
+ * 所有菜单项（右键菜单、下拉菜单、斜杠命令等）：
+ * 悬停/键盘高亮 = 白底黑字 + 黑色虚线框
+ * ============================================================ */
+.orca-menu-text:not(.orca-menu-text-disabled):hover,
+.orca-menu-item:hover,
+.orca-menu .orca-key-selected,
+.orca-select-item:not(.disabled):hover,
+.orca-tag-props-editor-name:hover {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  outline: 1.5px dashed var(--eink-black) !important;
+  outline-offset: -1.5px !important;
+}
+
+/* ============================================================
+ * 弹窗：去掉灰色蒙版与背景模糊，改为弹窗边缘 2px 纯黑描边
+ * （菜单/气泡弹窗的描边由 --orca-shadow-menu/popup 变量统一实现）
+ * ============================================================ */
+.orca-modal-overlay {
+  background-color: transparent !important;
+}
+
+.orca-modal-overlay-blurred {
+  backdrop-filter: none !important;
+}
+
+.orca-modal-overlay > * {
+  box-shadow: 0 0 0 2px var(--eink-black) !important;
+}
+
+/* 悬浮提示框：原为黑底白字反色，改为白底黑字 + 纯黑实线框 */
+.orca-tooltip {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  box-shadow: 0 0 0 1.5px var(--eink-black) !important;
+}
+
+.orca-tooltip .orca-tooltip-shortcut {
+  color: var(--eink-gray-6) !important;
+}
+
+/* ============================================================
+ * AI 对话输入框：去掉渐变底色与响应中的旋转描边动画，
+ * 改为白底黑字 + 纯黑边框
+ * ============================================================ */
+.orca-aichat-composer {
+  background: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+  transition: none !important;
+}
+
+.orca-aichat-composer.orca-aichat-responding {
+  background: var(--eink-white) !important;
+  border-color: var(--eink-black) !important;
+  animation: none !important;
+}
+
+.orca-aichat-chatbox-input.orca-textarea {
+  background-color: var(--eink-white) !important;
+  color: var(--eink-black) !important;
+}
