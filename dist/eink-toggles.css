@@ -1,0 +1,140 @@
+/**
+ * E-Ink 黑白主题 - 可选开关样式
+ * 每组规则由插件按设置项在 <body> 上添加对应 class 后才生效，
+ * 且仅在「E-Ink」主题被选中时启用。
+ */
+
+/* ============================================================
+ * 开关 1：实心按钮描边化（默认开启）
+ * 大块黑色实心按钮 → 黑色边线 + 纯白底色 + 纯黑字色
+ * ============================================================ */
+body.eink-outline-buttons .orca-button.solid,
+body.eink-outline-buttons .orca-button.dangerous,
+body.eink-outline-buttons .orca-sidebar-create-aliased-btn.orca-button {
+  background: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: inset 0 0 0 1.5px #000000 !important;
+}
+
+body.eink-outline-buttons .orca-button.solid:hover,
+body.eink-outline-buttons .orca-button.dangerous:hover,
+body.eink-outline-buttons .orca-sidebar-create-aliased-btn.orca-button:hover {
+  background: #ececec !important;
+}
+
+body.eink-outline-buttons .orca-button.solid:active,
+body.eink-outline-buttons .orca-button.dangerous:active,
+body.eink-outline-buttons .orca-sidebar-create-aliased-btn.orca-button:active {
+  background: #dedede !important;
+}
+
+body.eink-outline-buttons .orca-button.solid:disabled,
+body.eink-outline-buttons .orca-button.solid[aria-disabled="true"],
+body.eink-outline-buttons .orca-button.dangerous:disabled,
+body.eink-outline-buttons .orca-button.dangerous[aria-disabled="true"] {
+  color: #9e9e9e !important;
+  box-shadow: inset 0 0 0 1.5px #9e9e9e !important;
+}
+
+/* ============================================================
+ * 开关 2：关闭动画与过渡（默认开启）
+ * 墨水屏刷新率低，动画会产生严重残影
+ * ============================================================ */
+body.eink-no-anim,
+body.eink-no-anim *,
+body.eink-no-anim *::before,
+body.eink-no-anim *::after {
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  animation-duration: 0.001s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+
+/* ============================================================
+ * 开关 3：去除阴影，弹窗改用纯黑边框（默认开启）
+ * 阴影在墨水屏上呈现为大片灰色噪点
+ * ============================================================ */
+body.eink-no-shadow {
+  --orca-shadow-menu: 0 0 0 2px #000000;
+  --orca-shadow-toolbar-list: 0 0 0 1px #000000;
+  --orca-shadow-findreplace: 0 0 0 1px #000000;
+  --orca-shadow-popup: 0 0 0 2px #000000;
+  --orca-shadow-segmented: 0 0 0 1px #000000;
+}
+
+body.eink-no-shadow #headbar {
+  backdrop-filter: none !important;
+}
+
+/* ============================================================
+ * 开关 4：链接与引用加下划线（默认开启）
+ * 黑白界面失去颜色区分后，用下划线标识可点击的链接
+ * ============================================================ */
+body.eink-underline-links a,
+body.eink-underline-links .orca-ref {
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+/* ============================================================
+ * 开关 5：图片与多媒体灰度化（默认开启）
+ * 让插图、视频封面与界面整体保持一致的黑白观感
+ * ============================================================ */
+body.eink-grayscale-media img,
+body.eink-grayscale-media video,
+body.eink-grayscale-media canvas,
+body.eink-grayscale-media iframe,
+body.eink-grayscale-media embed {
+  filter: grayscale(1) !important;
+}
+
+/* 侧边栏收藏/标签/页面图标、编辑区页面/标签/链接图标（多为彩色 emoji）一并灰度化 */
+body.eink-grayscale-media .orca-fav-item-icon,
+body.eink-grayscale-media .orca-tags-tag-icon,
+body.eink-grayscale-media .orca-tags-tag-icon-emoji,
+body.eink-grayscale-media .orca-aliased-block-icon,
+body.eink-grayscale-media .orca-aliased-block-icon-emoji,
+body.eink-grayscale-media .orca-repr-alias-icon,
+body.eink-grayscale-media .orca-tag-icon,
+body.eink-grayscale-media .orca-tag-emoji,
+body.eink-grayscale-media .orca-inline-l-icon,
+body.eink-grayscale-media .orca-inline-l-favicon,
+body.eink-grayscale-media .orca-inline-l-emoji {
+  filter: grayscale(1) !important;
+}
+
+/* ============================================================
+ * 开关 6：高对比选区，黑底白字（默认关闭）
+ * 部分墨水屏灰阶表现差，浅灰选区不易辨认
+ * ============================================================ */
+body.eink-hc-selection ::selection {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.eink-hc-selection {
+  --orca-color-selection: #bdbdbd;
+}
+
+/* ============================================================
+ * 开关 7：隐藏图标（默认关闭）
+ * 隐藏侧边栏收藏/标签/页面列表图标、编辑区页面图标、
+ * 链接图标与标签标记图标，进一步减少视觉干扰
+ * ============================================================ */
+body.eink-hide-icons .orca-fav-item-icon,
+body.eink-hide-icons .orca-tags-tag-icon,
+body.eink-hide-icons .orca-tags-tag-icon-emoji,
+body.eink-hide-icons .orca-tags-tag-icon-hash,
+body.eink-hide-icons .orca-aliased-block-icon,
+body.eink-hide-icons .orca-aliased-block-icon-emoji,
+body.eink-hide-icons .orca-repr-alias-icon,
+body.eink-hide-icons .orca-tag-icon,
+body.eink-hide-icons .orca-tag-emoji,
+body.eink-hide-icons .orca-inline-l-icon,
+body.eink-hide-icons .orca-inline-l-favicon,
+body.eink-hide-icons .orca-inline-l-emoji {
+  display: none !important;
+}
